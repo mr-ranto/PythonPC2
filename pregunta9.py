@@ -4,13 +4,18 @@ Escribe un programa que encuentre todos los números perfectos menores que 1000.
 perfecto es un número entero positivo que es igual a la suma de sus divisores propios positivos
 (excluyendo el propio número).
 """
-print("Los números perfectos menores que 1000:")
+def encontrar_perfectos(limite=1000):
+    #Encuentra números perfectos menores al límite
+    perfectos = []
+    for numero in range(1, limite):
+        suma = 0
+        for divisor in range(1, numero):
+            if numero % divisor == 0:
+                suma += divisor
+        if suma == numero:
+            perfectos.append(numero)
+    return perfectos
 
-for numero in range(1, 1000):
-    suma_divisores = 0
-    for divisor in range(1, numero):
-        if numero % divisor == 0:
-            suma_divisores += divisor
-    
-    if suma_divisores == numero:
-        print(numero, "es perfecto ✅")
+# Llamar a la función
+perfectos = encontrar_perfectos(1000)
+print("Números perfectos < 1000:", perfectos)
